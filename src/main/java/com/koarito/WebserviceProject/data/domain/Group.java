@@ -12,7 +12,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "Group")
+@Table(name = "forum")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,8 +28,8 @@ public class Group {
 
     @ManyToMany
     @JoinTable(
-            name = "group_user",
-            joinColumns = @JoinColumn(name = "group_id"),
+            name = "forum_user",
+            joinColumns = @JoinColumn(name = "forum_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private Set<User> groupMembers = new HashSet<>();
