@@ -26,8 +26,7 @@ public class GroupService {
             group.setName(newGroup.getName());
             group.setGroupAdmin(userRepository.getReferenceById(newGroup.getGroupAdminId()));
             if(newGroup.getGroupMembersId().size() != 0) {
-                Set<User> convertedSet = new HashSet<>(userRepository.findAllById(newGroup.getGroupMembersId()));
-                group.setGroupMembers(convertedSet);
+                group.setGroupMembers(new HashSet<>(userRepository.findAllById(newGroup.getGroupMembersId())));
             }
             return new ResponseEntity(groupRepository.save(group).getId(), HttpStatus.CREATED);
         } catch (Exception e){
